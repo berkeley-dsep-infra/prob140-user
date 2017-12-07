@@ -24,12 +24,13 @@ RUN apt-get update && \
             texlive-generic-recommended \
             ;
 
-RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
-    locale-gen
-
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
+
+RUN echo "${LC_ALL} UTF-8" > /etc/locale.gen && \
+    locale-gen
+
 # Set this to be on container storage, rather than under $HOME
 ENV IPYTHONDIR ${APP_DIR}/venv/etc/ipython
 
