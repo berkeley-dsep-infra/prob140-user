@@ -1,6 +1,9 @@
 # base
+notebook==5.1.0
+jupyterhub==0.8.1
+widgetsnbextension==3.1.0rc1
 ipywidgets==6.0.0
-jupyterlab==0.29.2
+jupyterlab==0.30.2
 #
 # data8; foundation
 datascience==0.10.1
@@ -13,7 +16,7 @@ okpy==1.12.5
 cython==0.25.2
 numpy==1.12.1
 nbgitpuller==0.3
-https://github.com/data-8/nbresuse.git@2f9144f
+git+https://github.com/data-8/nbresuse.git@2f9144f
 #
 # prob140; 
 prob140==0.3.0.0

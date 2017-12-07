@@ -43,13 +43,6 @@ WORKDIR /home/jovyan
 USER jovyan
 RUN python3.6 -m venv ${APP_DIR}/venv
 
-RUN pip install --no-cache-dir \
-      notebook==5.1.0 \
-      git+https://github.com/jupyterhub/jupyterhub@0.8.0rc2
-
-RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
-    jupyter serverextension enable --py jupyterlab --sys-prefix
-
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
@@ -57,9 +50,12 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt
 RUN pip install --no-cache-dir \
 	git+https://github.com/data-8/connector-instructors.git@e7bd553
 
+RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+    jupyter serverextension enable --py jupyterlab --sys-prefix
+
 # nbresuse to show users memory usage
-RUN pip install git+https://github.com/data-8/nbresuse.git@2f9144f && \
-	jupyter serverextension enable  --sys-prefix --py nbresuse && \
+#RUN pip install git+https://github.com/data-8/nbresuse.git@2f9144f && \
+RUN jupyter serverextension enable  --sys-prefix --py nbresuse && \
 	jupyter nbextension     install --sys-prefix --py nbresuse && \
 	jupyter nbextension     enable  --sys-prefix --py nbresuse
 
